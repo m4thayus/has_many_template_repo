@@ -1,16 +1,24 @@
 class Location
 
-    attr_reader :name
+    @@all = []
+    attr_reader :name,:type
 
-    def initialize(name)
+    def initialize(name,type)
         @name = name
+        @type = type
+        @@all << self
     end
 
-    def pokemon
-        Poke_Loc.all.select{ |join| join.location == self }
+    def species
+        Pokemon.all.select{ |join| join.location == self }
     end
 
-    def pokemon_count
-        self.pokemon.length
+    def species_count
+        self.species.length
     end
+
+    def self.all
+        @@all
+    end
+
 end

@@ -1,36 +1,39 @@
-require_relative './pokemon.rb'
+require_relative './species.rb'
 require_relative './location.rb'
-require_relative './poke_loc.rb'
+require_relative './pokemon.rb'
+require 'pry'
 
 # Pokemon
-pikachu = Pokemon.new("Pikachu")
-zubat = Pokemon.new("Zubat")
-clefairy = Pokemon.new("Clefairy")
-mewtwo = Pokemon.new("Mewtwo")
+pikachu = Species.new("Pikachu")
+pikachu.add_habitat("forest")
+pikachu.add_habitat("urban")
+zubat = Species.new("Zubat")
+zubat.add_habitat("cave")
+clefairy = Species.new("Clefairy")
+clefairy.add_habitat("cave")
+mewtwo = Species.new("Mewtwo")
+mewtwo.add_habitat("cave")
 
 # Location
-viridian_forest = Location.new("Viridian Forest")
-power_plant = Location.new("Power Plant")
+viridian_forest = Location.new("Viridian Forest","forest")
+power_plant = Location.new("Power Plant","urban")
+mt_moon = Location.new("Mt. Moon","cave")
+rock_tunnel = Location.new("Rock Tunnel","cave")
+seafoam_islands = Location.new("Seafoam Islands","cave")
+victory_road = Location.new("Victory Road","cave")
+celadon_city = Location.new("Celadon City","urban")
+cerulean_cave = Location.new("Cerulean Cave","cave")
 
-mt_moon = Location.new("Mt. Moon")
-rock_tunnel = Location.new("Rock Tunnel")
-seafoam_islands = Location.new("Seafoam Islands")
-victory_road = Location.new("Victory Road")
-
-celadon_city = Location.new("Celadon City")
-
-cerulean_cave = Location.new("Cerulean Cave")
-
-# Poke_Loc
-Poke_Loc.new(pikachu, viridian_forest)
-Poke_Loc.new(pikachu, power_plant)
-Poke_Loc.new(zubat, mt_moon)
-Poke_Loc.new(zubat, rock_tunnel)
-Poke_Loc.new(zubat, seafoam_islands)
-Poke_Loc.new(zubat, victory_road)
-Poke_Loc.new(clefairy, mt_moon)
-Poke_Loc.new(clefairy, celadon_city)
-Poke_Loc.new(mewtwo, cerulean_cave)
+#Pokemon
+Pokemon.new(pikachu, viridian_forest)
+Pokemon.new(pikachu, power_plant)
+Pokemon.new(zubat, mt_moon)
+Pokemon.new(zubat, rock_tunnel)
+Pokemon.new(zubat, seafoam_islands)
+Pokemon.new(zubat, victory_road)
+Pokemon.new(clefairy, mt_moon)
+Pokemon.new(clefairy, celadon_city)
+Pokemon.new(mewtwo, cerulean_cave)
 
 
 # Tests
@@ -41,7 +44,13 @@ puts "Zubat has 4 locations:"
 puts zubat.location_count
 puts
 puts "Cerulean Cave has Mewtwo"
-p cerulean_cave.pokemon
+p cerulean_cave.species
 puts
 puts "Mt. Moon has 2 pokemon:"
-puts mt_moon.pokemon_count
+puts mt_moon.species_count
+
+# 10.times do Pokemon.spawn end
+
+binding.pry
+
+"HI"
